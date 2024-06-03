@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Clipboard Viewer</title>
+	</head>
+	<body>
+		<h1>Clipboard Content</h1>
+		<pre id="clipboard-content"></pre>
+		<h1>Corrected Text</h1>
+		<pre id="corrected-text"></pre>
+		<script>
+			window.electron.onClipboardContent((content) => {
+				document.getElementById("clipboard-content").textContent = content;
+			});
+
+			window.electron.onCorrectedText((text) => {
+				document.getElementById("corrected-text").textContent = text;
+			});
+
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") {
+					window.electron.minimizeWindow();
+				}
+			});
+		</script>
+	</body>
+</html>
