@@ -1,14 +1,36 @@
 {
-	"name": "electron-clipboard-app",
+	"name": "win-chatgpt-grammar-corrector",
 	"version": "1.0.0",
+	"description": "An Electron app that corrects clipboard text grammar using OpenAI's GPT-4.",
+	"author": "Alex",
 	"main": "main.js",
 	"scripts": {
-		"start": "electron ."
+		"start": "electron .",
+		"build": "electron-builder"
+	},
+	"build": {
+		"appId": "com.yourname.clipboardgrammarcorrector",
+		"productName": "Clipboard Grammar Corrector",
+		"files": [
+			"main.js",
+			"preload.js",
+			"index.html",
+			"package.json",
+			".env",
+			"icon.png"
+		],
+		"win": {
+			"target": "nsis",
+			"icon": "icon.png"
+		}
 	},
 	"dependencies": {
 		"axios": "^0.21.1",
 		"clipboardy": "^2.3.0",
-		"dotenv": "^16.4.5",
-		"electron": "^13.1.7"
+		"dotenv": "^16.4.5"
+	},
+	"devDependencies": {
+		"electron": "^13.1.7",
+		"electron-builder": "^22.11.7"
 	}
 }
